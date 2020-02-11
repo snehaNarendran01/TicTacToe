@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class PositionTest {
@@ -10,5 +11,14 @@ public class PositionTest {
         Position positionThree = new Position(1, 1);
 
         assertTrue(positionOne.compareWith(positionTwo, positionThree));
+    }
+
+    @Test
+    public void shouldReturnFalseIfRowIndicesOfThreePositionsAreNotEqual() {
+        Position positionOne = new Position(1, 2);
+        Position positionTwo = new Position(2, 0);
+        Position positionThree = new Position(1, 1);
+
+        assertFalse(positionOne.compareWith(positionTwo, positionThree));
     }
 }

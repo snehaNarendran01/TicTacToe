@@ -1,6 +1,6 @@
 public class Position {
-    int rowIndex;
-    int columnIndex;
+    private int rowIndex;
+    private int columnIndex;
 
     public Position(int rowIndex, int columnIndex) {
         this.rowIndex = rowIndex;
@@ -8,6 +8,6 @@ public class Position {
     }
 
     public boolean compareWith(Position positionTwo, Position positionThree) {
-        return true;
+        return this.rowIndex == positionTwo.rowIndex && positionTwo.rowIndex == positionThree.rowIndex;
     }
 }
