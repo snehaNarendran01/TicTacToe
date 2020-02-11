@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class TicTacToe {
 
     private final Player playerOne;
@@ -11,7 +9,7 @@ public class TicTacToe {
     }
 
     public Player getWinner() {
-        if (playerOne.moves().get(0).compareWith(playerOne.moves().get(1), playerOne.moves().get(1)))
+        if (playerOne.moves().get(0).compareWith(playerOne.moves().get(1), playerOne.moves().get(2)))
             return playerOne;
         return playerTwo;
     }

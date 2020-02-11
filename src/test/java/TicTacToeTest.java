@@ -8,46 +8,46 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class TicTacToeTest {
-    @Test
-    public void shouldReturnWinnerIfHePlacesHisArtifactsInTheSameRow() {
-        Player playerOne = mock(Player.class);
-        Position playerOnePositionOne = mock(Position.class);
-        Position playerOnePositionTwo = mock(Position.class);
-        Position playerOnePositionThree = mock(Position.class);
-        ArrayList<Position> playerOnePositions = new ArrayList<>(Arrays.asList(playerOnePositionOne,
-                playerOnePositionTwo, playerOnePositionThree));
+    private Player playerOne;
+    private Position playerOnePositionOne;
+    private Position playerOnePositionTwo;
+    private Position playerOnePositionThree;
+    private Player playerTwo;
+    private Position playerTwoPositionOne;
+    private Position playerTwoPositionTwo;
+    private Position playerTwoPositionThree;
+
+    private void initialize() {
+        playerOne = mock(Player.class);
+        playerOnePositionOne = mock(Position.class);
+        playerOnePositionTwo = mock(Position.class);
+        playerOnePositionThree = mock(Position.class);
+        ArrayList<Position> playerOnePositions = new ArrayList<>(Arrays.asList(mock(Position.class),
+                mock(Position.class), mock(Position.class)));
         when(playerOne.moves()).thenReturn(playerOnePositions);
-        Player playerTwo = mock(Player.class);
-        Position playerTwoPositionOne = mock(Position.class);
-        Position playerTwoPositionTwo = mock(Position.class);
-        Position playerTwoPositionThree = mock(Position.class);
+        playerTwo = mock(Player.class);
+        playerTwoPositionOne = mock(Position.class);
+        playerTwoPositionTwo = mock(Position.class);
+        playerTwoPositionThree = mock(Position.class);
         ArrayList<Position> playerTwoPositions = new ArrayList<>(Arrays.asList(playerTwoPositionOne,
                 playerTwoPositionTwo, playerTwoPositionThree));
         when(playerTwo.moves()).thenReturn(playerTwoPositions);
+    }
+
+    @Test
+    public void shouldReturnWinnerIfHePlacesHisArtifactsInTheSameRow() {
+        initialize();
         when(playerOnePositionOne.compareWith(playerOnePositionTwo, playerOnePositionThree)).thenReturn(true);
         when(playerTwoPositionOne.compareWith(playerTwoPositionTwo, playerTwoPositionThree)).thenReturn(false);
 
         TicTacToe ticTacToe = new TicTacToe(playerOne, playerTwo);
 
-        assertEquals(playerTwo, ticTacToe.getWinner());
+        assertEquals(playerOne, ticTacToe.getWinner());
     }
 
     @Test
     public void shouldReturnWinnerIfHePlacesHisArtifactsInTheSameColumn() {
-        Player playerOne = mock(Player.class);
-        Position playerOnePositionOne = mock(Position.class);
-        Position playerOnePositionTwo = mock(Position.class);
-        Position playerOnePositionThree = mock(Position.class);
-        ArrayList<Position> playerOnePositions = new ArrayList<>(Arrays.asList(playerOnePositionOne,
-                playerOnePositionTwo, playerOnePositionThree));
-        when(playerOne.moves()).thenReturn(playerOnePositions);
-        Player playerTwo = mock(Player.class);
-        Position playerTwoPositionOne = mock(Position.class);
-        Position playerTwoPositionTwo = mock(Position.class);
-        Position playerTwoPositionThree = mock(Position.class);
-        ArrayList<Position> playerTwoPositions = new ArrayList<>(Arrays.asList(playerTwoPositionOne,
-                playerTwoPositionTwo, playerTwoPositionThree));
-        when(playerTwo.moves()).thenReturn(playerTwoPositions);
+        initialize();
         when(playerOnePositionOne.compareWith(playerOnePositionTwo, playerOnePositionThree)).thenReturn(false);
         when(playerTwoPositionOne.compareWith(playerTwoPositionTwo, playerTwoPositionThree)).thenReturn(true);
 
