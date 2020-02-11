@@ -21,4 +21,14 @@ public class PositionTest {
 
         assertFalse(positionOne.compareWith(positionTwo, positionThree));
     }
+
+    @Test
+    public void shouldReturnTrueIfColumnIndicesOfThreePositionsAreEqual() {
+        Position positionOne = new Position(1, 1);
+        Position positionTwo = new Position(2, 1);
+        Position positionThree = new Position(1, 1);
+
+        assertTrue(positionOne.compareWith(positionTwo, positionThree));
+    }
+
 }
